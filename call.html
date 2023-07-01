@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Function with Number</title>
+    </head>
+    <style type="text/css" media="all">
+        form{
+            margin: 100px auto;
+            width: 80%;
+            height: 200px;
+            background: linear-gradient(to bottom, #FF4AE3, #B500FF);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        form h3{
+            text-align: center;
+            color: white;
+            font-size: 25px;
+            margin: 10 auto;
+        }
+        form input{
+            width: 100%;
+            padding: 10px;
+            font-size: 17px;
+            outline: none;
+            border-radius: 5px;
+            border: none;
+            color: purple;
+            text-align: center;
+            font-weight: 600;
+        }
+        form button{
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color:#3C7800;
+            color: white;
+            font-size: 17px;
+            border: none;
+            border-radius: 5px;
+            transition: 0.2s;
+        }
+        form button:hover{
+            border: 1px solid white;
+            color: green;
+            background-color: white;
+        }
+        form button:disabled{
+            background-color: black;
+            color: white;
+        }
+        .button{
+             margin-top: 10px;
+             margin-left: 5px;
+             margin-right: 5px;
+            width: 45%;
+            padding: 5px;
+            background-color:#00AEFF;
+            color: white;
+            font-size: 17px;
+            border: none;
+            border-radius: 5px;
+            transition: 0.2s;
+            float: left;
+        }
+        .button:hover{
+            border: 1px solid white;
+            color: black;
+            background-color: white;
+        }
+        .button:disabled{
+            background-color: black;
+            color: white;
+        }
+
+    </style>
+    <body>
+        <form>
+            <h3>Enter Number</h3>
+            <input type="number" id="number" placeholder="Enter mobile no." oninput="check()"/>
+            <button id="opwa" disabled onclick="openwa()">Type Number</button>
+            <button class="button" id="call" disabled onclick="mcall()">Type Number</button>
+             <button class="button" id="sms" disabled onclick="message()">Type Number</button>
+        </form>
+    </body>
+    <script type="text/javascript" charset="utf-8">
+    function check(){
+        var a = document.getElementById('number').value;
+        var c = a.length;
+        
+        if(c == 11){
+            document.getElementById("opwa").disabled = false;
+            document.getElementById("opwa").innerHTML = "Open Whatsapp";
+            
+            document.getElementById("call").disabled = false;
+            document.getElementById("call").innerHTML = "Call Now";
+            
+            document.getElementById("sms").disabled = false;
+            document.getElementById("sms").innerHTML = "Send Message";
+        }
+        else{
+            document.getElementById("opwa").disabled = true;
+            document.getElementById("call").disabled = true;
+            document.getElementById("sms").disabled = true;
+        }
+    }
+    function openwa(){
+        var phone = document.getElementById('number').value;
+        var link = `https://wa.me/${phone}`;
+        window.open(link);
+        
+    };
+    function mcall(){
+        var cphone = document.getElementById('number').value;
+        var clink = `tel:+${cphone}`;
+        window.open(clink);
+    };
+    function message(){
+        var sphone = document.getElementById('number').value;
+        var slink = `sms:+${sphone}`;
+        window.open(slink);
+        
+    };
+    </script>
