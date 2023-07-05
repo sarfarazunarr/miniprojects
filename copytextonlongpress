@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Text on Longpress and on Right Click</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    .content{
+        width: 300px;
+        height: 300px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: rgb(52, 52, 52);
+        color: white;
+        font-size: 14px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        border: none;
+        border-radius: 10px;
+        transition: 0.5s;
+        
+    }
+    .content:hover{
+        background-color: #252525;
+    }
+</style>
+<body>
+    <div class="content">
+        <p id="textToCopy">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed numquam nihil ipsa necessitatibus quod reiciendis mollitia consequuntur veritatis? Temporibus, quidem. Natus aut aperiam exercitationem vitae libero quae veniam, quam distinctio eos consequuntur ab blanditiis! Quis totam quidem molestias eaque ea veritatis praesentium officia repellat facilis!
+        </p>
+    </div>
+    
+</body>
+<script>
+    function copyText() {
+      // Get the text to copy
+      var text = document.getElementById("textToCopy").textContent;
+
+      // Create a temporary element to hold the text
+      var tempElement = document.createElement("textarea");
+      tempElement.value = text;
+      document.body.appendChild(tempElement);
+
+      // Copy the text from the temporary element
+      tempElement.select();
+      document.execCommand("copy");
+
+      // Remove the temporary element
+      document.body.removeChild(tempElement);
+
+      // Notify the user that the text has been copied
+      alert("Text copied!");
+    }
+
+    // Right-click event listener
+    document.addEventListener("contextmenu", function(event) {
+      event.preventDefault();
+      copyText();
+    });
+
+    // Long-press event listener (for touch screens)
+    var pressTimer;
+    document.addEventListener("touchstart", function(event) {
+      pressTimer = setTimeout(function() {
+        copyText();
+      }, 1000); // Adjust the duration of the long press here (in milliseconds)
+    });
+
+    document.addEventListener("touchend", function(event) {
+      clearTimeout(pressTimer);
+    });
+  </script>
+</html>
