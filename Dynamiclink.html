@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Link based on User input</title> 
+    <style>
+        /* Make your own styling to get best result */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.container{
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 200px;
+    background-color: rgb(228, 255, 204);
+    border: none;
+    border-radius: 10px;
+}
+.container h3{
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+}
+.container p{
+    color: red;
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.container label{
+    font-size: 16px;
+    color: black;
+    text-transform: uppercase;
+}
+.container select{
+    width: 76%;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 2px rgb(235, 235, 235);
+    margin: 10px 5px;
+    accent-color: green;
+}
+#olevel{
+    width: 74%;
+}
+.container input{
+    width: 50%;
+    height: 40px;
+    padding: 3px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 2px gray;
+    color: green;
+    margin: 20px 20px;
+    font-size: 20px;
+    text-transform: center;
+    font-weight: bold;
+    text-align: center;
+}
+.container button{
+    width: 98%;
+    padding: 2px;
+    height: 40px;
+    background-color: green;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: 0.3s;
+}
+.container button:hover{
+    background-color: transparent;
+    color: green;
+    border: 2px solid green;
+    box-shadow: 0px 0px 8px 2px rgb(178, 213, 178);
+}
+
+    </style>
+<!--   Sarfaraz's Coding Club (Copyright)   -->
+</head>
+<body>
+   <div class="container">
+    <h3>Check Attendance By ID Number</h3>
+    <p>Enter Data correctly to get better result!</p>
+    <form>
+        <label for="class">Class</label>
+        <select name="class" id="class">
+            <option value="XI">XI</option>
+            <option value="XII">XII</option>
+        </select>
+        <label for="olevel">Olevel</label>
+        <select name="olevel" id="olevel">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        <label for="number">Number</label>
+        <input type="number" id="number" placeholder="123456">
+        <button type="submit" id="attendance-button">Check Attendance</button>
+    </form>
+   </div> 
+</body>
+<script>
+    const form = document.querySelector('form');
+const button = document.querySelector('#attendance-button');
+
+form.addEventListener('submit', (event)=>{
+    event.preventDefault();
+
+    const classValue = document.querySelector('#class').value;
+    const olevelValue = document.querySelector('#olevel').value;
+    const idnumber = document.querySelector('#number').value;
+
+    //generate link
+    const link = `https://example.com/#/student-attendance/${idnumber}/${classValue}/${olevelValue}/`;
+
+    // Set the link as href
+    button.href = link;
+
+    //open the link in New Tab
+    window.open(link,'_blank');
+
+});
+// Subscribe Channel
+
+</script>
+<!--  SUBSCRIBE OUR YOUTUBE CHANNEL    -->
+</html>
