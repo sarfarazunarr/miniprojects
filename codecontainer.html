@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Code By Sarfaraz Coding Club -->
+    <title>Code Container</title>
+
+<!-- Highlight js library link -->
+
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+    <style>
+            /* CSS START */
+        .code-container{
+            width: 50%;
+            height: 300px;
+            margin: 100px auto;
+            background-color: #242424;
+            border-radius: 10px;
+            padding: 15px;
+            position: relative;
+            box-shadow: 0px 0px 3px 0px #780066;
+        }
+        #language{
+            text-align: left;
+            color: white;
+            font-weight: 400;
+            background-color: #BD00FF;
+            padding: 3px 10px;
+            border-radius: 5px;
+            position: fixed;
+        }
+        #copybutton{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 80px;
+            height: 30px;
+            font-size: 15px;
+            background-color: transparent;
+            color: #FF95E1;
+            border: 1px solid purple;
+            border-radius: 5px;
+            transition: 0.5s;
+        }
+        #copybutton:hover{
+            background-color: #BD00FF;
+            color: white;
+            border: none;
+        }
+        #codes{
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            text-align: left;
+            color: #C6C6C6;
+            line-height: 20px;
+            padding: 10px;
+        }
+        /* CSS END */
+
+    </style>
+</head>
+<body>
+    <div class="code-container">
+        <span id="language">HTML</span>
+        <button id="copybutton" onclick="copycode(this)">Copy</button>
+        <code id="codes" class="html">
+            //Thank for watching video
+            //like share and Subscribe
+        </code>
+    </div>
+</body>
+
+<script>
+    function copycode(){
+        const codeElement = document.querySelector('#codes');
+        const code = codeElement.textContent;
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+var cc = document.getElementById('copybutton');
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+cc.innerHTML = "Copied!";
+    }
+</script>
+
+<!--  Please Subscribe My Youtube Channel to get more codes and tutorials like this. -->
+</html>
