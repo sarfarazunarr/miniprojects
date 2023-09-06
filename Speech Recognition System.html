@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Using Tailwind instead of using css separately -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Convert Speech to text</title>
+</head>
+<body>
+    <div class="container mx-auto">
+
+        <h1 class="text-3xl text-purple-900 font-semibold text-center pt-10">Convert Speech to Text Easily!</h1>
+        <p class="text-px text-center text-gray-600 pb-10">Just Click on Write with voice button and start typing!</p>
+        <!-- Form tag replaced we don't need it -->
+        <!-- If you wants form tag then add preventDefault in JavaScript-->
+            <div class="col-span-full mx-40 relative">
+                <label for="text" class="block text-sm font-medium leading-6 text-gray-600">Enter Text here...</label>
+                <textarea id="textInput" cols="30" rows="10" placeholder="Start Speaking..." class="block w-full rounded-md border00 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus-ring-inset focus:ring-purple-600 p-2"></textarea>
+                <!-- Button that will start recognition -->
+                <button id="voicestart" class="absolute bottom-3 right-3 p-2 rounded-full bg-purple-900 border-2 text-white hover:bg-transparent hover:text-purple-900 hover:border-purple-900 hover:border-2 transition duration-2 ">Start Speaking</button>
+            </div>
+    </div>
+</body>
+
+<script>
+    // Getting Values
+    const voicebtn = document.getElementById('voicestart');
+    const textInput = document.getElementById('textInput');
+    let isListening = false;
+
+    // Voice Recognition using Web Speech API
+    const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+    recognition.lang = 'en-US';
+
+    // Recognition Start
+    recognition.onstart = () => {
+        voicebtn.innerHTML = "Listening...";
+        isListening = true;
+    }
+    // Recognition Result
+    recognition.onresult = (event) => {
+        const voicequery = event.results[0][0].transcript;
+        textInput.value = voicequery;
+
+    }
+    // Recongition End
+    recognition.onend = () => {
+        voicebtn.innerHTML = "Start Speaking";
+        isListening = false;
+    }
+
+    // Trigger Action on button click
+    voicebtn.addEventListener('click', ()=>{
+        if(!isListening){
+            recognition.start();
+        }
+        else{
+            recognition.stop();
+        }
+    })
+    // Subscribe Sarfaraz Coding Club Youtube Channel for more interesting
+    // Videos like this.
+    // https://www.youtube.com/@sarfarazcodingclub/
+</script>
+</html>
