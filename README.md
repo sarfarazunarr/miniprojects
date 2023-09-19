@@ -1,4 +1,4 @@
-# YouTube Projects Repository
+# YouTube Mini Projects (Sarfaraz Coding Club)
 
 Welcome to the YouTube Projects repository! In this repository, you will find a collection of small projects that I have created in my YouTube videos. These projects cover a range of topics and demonstrate various programming concepts. Whether you're a beginner looking to learn or an experienced developer seeking inspiration, you'll find something here to pique your interest.
 
